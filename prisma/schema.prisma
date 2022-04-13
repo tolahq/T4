@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+enum BillStatus {
+  Paid
+  NotPaid
+}
+
+model Vendor {
+  id        String   @id @default(uuid())
+  name      String
+  accountId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  bill      Bill[]
+}
+
+model Bill {
+  id        String     @id @default(uuid())
+  vendorId  String
+  vendor    Vendor     @relation(fields: [vendorId], references: [id])
+  dueOn     DateTime
+  amount    Int
+  status    BillStatus @default(NotPaid)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now()) @updatedAt
+}
