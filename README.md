@@ -27,7 +27,7 @@ experience as we tend to refactor pretty aggressively.
 - Docker which runs Postgres - _feel free to edit `.env` to remove the dependency on Docker and connect to your own_
 
 ```bash
-git clone git@github.com:tolahq/eval.git
+git clone git@github.com:tolahq/t4.git
 npm install
 cp .env.example .env # and edit if needed
 npm run db-up # starts Postgres, migrates db and adds seed data
