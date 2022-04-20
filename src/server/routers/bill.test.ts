@@ -46,8 +46,6 @@ test.skip('pay bill', async () => {
   // pay bill
   await caller.mutation('bill.pay', {
     billId: bill.id,
-    accountId: 'something',
-    amount: bill.amount,
   });
 
   expect(creditSpy).toHaveBeenCalledTimes(1);
@@ -75,13 +73,9 @@ test.skip('pay bill - race condition', async () => {
   const results = await Promise.allSettled([
     caller.mutation('bill.pay', {
       billId: bill.id,
-      amount: bill.amount,
-      accountId: 'fake',
     }),
     caller.mutation('bill.pay', {
       billId: bill.id,
-      amount: bill.amount,
-      accountId: 'fake',
     }),
   ]);
 
