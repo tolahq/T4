@@ -64,11 +64,9 @@ export const postRouter = createRouter()
   })
   .mutation('pay', {
     input: z.object({
-      amount: z.number(),
       billId: z.string(),
-      accountId: z.string(),
     }),
-    async resolve({ input }) {
+    async resolve() {
       // TODO: Implement this function.
       throw new TRPCError({
         code: 'METHOD_NOT_SUPPORTED',
