@@ -64,9 +64,7 @@ export const postRouter = createRouter()
   })
   .mutation('pay', {
     input: z.object({
-      amount: z.number(),
       billId: z.string(),
-      accountId: z.string(),
     }),
     async resolve({ input }) {
       // TODO: Implement this function.
