@@ -66,7 +66,7 @@ export const postRouter = createRouter()
     input: z.object({
       billId: z.string(),
     }),
-    async resolve() {
+    async resolve({ input }) {
       // TODO: Implement this function.
       throw new TRPCError({
         code: 'METHOD_NOT_SUPPORTED',
