@@ -6,10 +6,15 @@ import { appRouter } from './_app';
 import { PortalPaymentService } from '~/server/service/payment';
 import { prisma } from '~/server/prisma';
 import { sample } from '~/utils/fake';
-jest.mock('~/server/service/payment');
+
+const getCreditMock = () =>
+  jest.spyOn(PortalPaymentService.prototype, 'credit');
+
+let creditMock: ReturnType<typeof getCreditMock>;
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  jest.clearAllMocks();
+  creditMock = getCreditMock();
 });
 
 test('list posts', async () => {
@@ -21,10 +26,6 @@ test('list posts', async () => {
 });
 
 test.skip('pay bill', async () => {
-  const serviceMock =
-    PortalPaymentService as any as jest.Mock<PortalPaymentService>;
-  expect(serviceMock).not.toHaveBeenCalled();
-
   // create bill
   const bill = await prisma.bill.create({
     data: {
@@ -49,14 +50,10 @@ test.skip('pay bill', async () => {
     amount: bill.amount,
   });
 
-  const instance = serviceMock.mock.instances[0]!;
-  expect(instance.credit).toHaveBeenCalledTimes(1);
+  expect(creditMock).toHaveBeenCalledTimes(1);
 });
 
 test.skip('pay bill - race condition', async () => {
-  const serviceMock =
-    PortalPaymentService as any as jest.Mock<PortalPaymentService>;
-
   // create bill
   const bill = await prisma.bill.create({
     data: {
@@ -89,19 +86,8 @@ test.skip('pay bill - race condition', async () => {
   ]);
 
   // only 1 should succeed
-  const instance = serviceMock.mock.instances[0]!;
-  expect(instance.credit).toHaveBeenCalledTimes(1);
-
-  expect(results).toMatchInlineSnapshot(`
-    Array [
-      Object {
-        "status": "fulfilled",
-        "value": null,
-      },
-      Object {
-        "reason": [TRPCError: Bill already paid],
-        "status": "rejected",
-      },
-    ]
-  `);
+  expect(creditMock).toHaveBeenCalledTimes(1);
+  expect(
+    results.filter((result) => result.status === 'fulfilled'),
+  ).toHaveLength(1);
 });
