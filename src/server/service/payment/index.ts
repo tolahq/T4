@@ -28,7 +28,7 @@ export class PortalPaymentService {
     //
   }
 
-  async credit(opts: { accountId: string; amount: number }) {
+  async credit(opts: { vendorId: string; amount: number }) {
     return {
       id: v4(),
       amount: opts.amount,
