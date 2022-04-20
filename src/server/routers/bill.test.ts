@@ -10,11 +10,11 @@ import { sample } from '~/utils/fake';
 const getCreditMock = () =>
   jest.spyOn(PortalPaymentService.prototype, 'credit');
 
-let creditMock: ReturnType<typeof getCreditMock>;
+let creditSpy: ReturnType<typeof getCreditMock>;
 
 beforeEach(() => {
   jest.clearAllMocks();
-  creditMock = getCreditMock();
+  creditSpy = getCreditMock();
 });
 
 test('list posts', async () => {
@@ -50,7 +50,7 @@ test.skip('pay bill', async () => {
     amount: bill.amount,
   });
 
-  expect(creditMock).toHaveBeenCalledTimes(1);
+  expect(creditSpy).toHaveBeenCalledTimes(1);
 });
 
 test.skip('pay bill - race condition', async () => {
@@ -86,7 +86,7 @@ test.skip('pay bill - race condition', async () => {
   ]);
 
   // only 1 should succeed
-  expect(creditMock).toHaveBeenCalledTimes(1);
+  expect(creditSpy).toHaveBeenCalledTimes(1);
   expect(
     results.filter((result) => result.status === 'fulfilled'),
   ).toHaveLength(1);
