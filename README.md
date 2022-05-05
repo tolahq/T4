@@ -45,7 +45,7 @@ http://localhost:3000 live, no need to restart your server.
 
 - Please do not modify the linting rules in your main PR. If you have
   suggestions or opinions on how to improve DX please do so in a comment or
-  along side your submission. We review the changes against the main repository
+  along side your submission. This will make it easier for us to review your challenge as we will compare your changes against the main repository
   or base commit in this repo.
 
 ## FAQ
