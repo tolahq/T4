@@ -2,7 +2,7 @@
  * DO NOT MODIFY THIS FILE.
  */
 import { createRouter } from '../createRouter';
-import { postRouter } from './bill';
+import { billRouter } from './bill';
 import superjson from 'superjson';
 
 export const appRouter = createRouter()
@@ -15,6 +15,6 @@ export const appRouter = createRouter()
       return 'yay!';
     },
   })
-  .merge('bill.', postRouter);
+  .merge('bill.', billRouter);
 
 export type AppRouter = typeof appRouter;

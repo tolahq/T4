@@ -29,7 +29,7 @@ const defaultBillSelect = Prisma.validator<Prisma.BillSelect>()({
   },
 });
 
-export const postRouter = createRouter()
+export const billRouter = createRouter()
   // create
   .query('list', {
     async resolve() {
