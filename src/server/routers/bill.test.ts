@@ -49,7 +49,11 @@ test.skip('pay bill', async () => {
     amount: bill.amount,
   });
 
-  const instance = serviceMock.mock.instances[0]!;
+  expect(serviceMock.mock.instances.length).toBeGreaterThanOrEqual(1);
+  const instance = serviceMock.mock.instances[0];
+  if (!instance) {
+    fail('no mocked instance');
+  }
   expect(instance.credit).toHaveBeenCalledTimes(1);
 });
 

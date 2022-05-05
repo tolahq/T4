@@ -15,7 +15,8 @@ about abuse, so it's important to only pay the amount listed on the bill. The
 applications database should persist that a payment took place.
 
 Please also add tests to make sure that our customers don't have a bad
-experience as we tend to refactor pretty aggressively.
+experience as we tend to refactor pretty aggressively. Please read through the
+[Guidance](#guidance) section before proceeding.
 
 [^1]: Located in `src/server/service/payment.ts`
 
@@ -24,7 +25,8 @@ experience as we tend to refactor pretty aggressively.
 **Requirements**
 
 - Node >= 14
-- Docker which runs Postgres - _feel free to edit `.env` to remove the dependency on Docker and connect to your own_
+- Docker which runs Postgres - _feel free to edit `.env` to remove the
+  dependency on Docker and connect to your own_
 
 ```bash
 git clone git@github.com:tolahq/t4.git
@@ -36,7 +38,15 @@ npm run dev # starts the app, go to http://localhost:3000
 
 **Notes**
 
-As long as `npm run dev` is running, your changes will be visible on http://localhost:3000 live, no need to restart your server.
+As long as `npm run dev` is running, your changes will be visible on
+http://localhost:3000 live, no need to restart your server.
+
+## Guidance
+
+- Please do not modify the linting rules in your main PR. If you have
+  suggestions or opinions on how to improve DX please do so in a comment or
+  along side your submission. We review the changes against the main repository
+  or base commit in this repo.
 
 ## FAQ
 
@@ -71,3 +81,4 @@ npm run test:e2e   # runs e2e tests
 - src/pages/index.tsx
 - src/pages/bill/[id].tsx
 - src/components/\*
+
