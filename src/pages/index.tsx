@@ -5,15 +5,17 @@ import { Avatar } from '~/components/Avatar';
 import { BillStatusLabel } from '~/components/BillStatusLabel';
 
 const IndexPage: NextPageWithLayout = () => {
-  const utils = trpc.useContext();
   const billsQuery = trpc.useQuery(['bill.list']);
 
+  /*
   // TODO: Use payMutation in your code!
+  const utils = trpc.useContext();
   const payMutation = trpc.useMutation('bill.pay', {
     onSuccess: () => {
       utils.invalidateQueries('bill.list');
     },
   });
+  */
 
   if (billsQuery.status === 'success') {
     return (

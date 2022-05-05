@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { NextPageWithLayout } from '~/pages/_app';
 import { trpc } from '~/utils/trpc';
 
-const PostViewPage: NextPageWithLayout = () => {
+const BillViewPage: NextPageWithLayout = () => {
   const id = useRouter().query.id as string;
   const billQuery = trpc.useQuery(['bill.info', { id }]);
 
@@ -28,4 +28,4 @@ const PostViewPage: NextPageWithLayout = () => {
   );
 };
 
-export default PostViewPage;
+export default BillViewPage;

@@ -29,7 +29,7 @@ const defaultBillSelect = Prisma.validator<Prisma.BillSelect>()({
   },
 });
 
-export const postRouter = createRouter()
+export const billRouter = createRouter()
   // create
   .query('list', {
     async resolve() {
@@ -69,6 +69,7 @@ export const postRouter = createRouter()
       accountId: z.string(),
     }),
     async resolve({ input }) {
+      console.debug(input);
       // TODO: Implement this function.
       throw new TRPCError({
         code: 'METHOD_NOT_SUPPORTED',

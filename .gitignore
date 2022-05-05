@@ -42,3 +42,6 @@ prisma/_sqlite/migrations
 playwright/test-results
 
 .env
+
+*.tsbuildinfo
+
