@@ -22,6 +22,18 @@ experience as we tend to refactor pretty aggressively. Please read through the
 
 ## Getting Started
 
+### Create a private fork
+
+First, you need to create your own private fork where you will push your work.
+
+1. Go to https://github.com/new/import
+2. Enter the URL `https://github.com/tolahq/T4.git`
+3. Set your repository name to `YOUR_USER/tola-t4
+4. Make it **private**
+5. Import!
+
+### App setup
+
 **Requirements**
 
 - Node >= 14
@@ -40,6 +52,10 @@ npm run dev # starts the app, go to http://localhost:3000
 
 As long as `npm run dev` is running, your changes will be visible on
 http://localhost:3000 live, no need to restart your server.
+
+### When you're done
+
+When you're done, contact the Tola team to confirm who should have access to your private repository.
 
 ## Guidance
 
