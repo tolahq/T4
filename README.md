@@ -28,7 +28,7 @@ First, you need to create your own private fork where you will push your work.
 
 1. Go to https://github.com/new/import
 2. Enter the URL `https://github.com/tolahq/T4.git`
-3. Set your repository name to `YOUR_USER/tola-t4
+3. Set your repository name to `YOUR_USER/tola-t4`
 4. Make it **private**
 5. Import!
 
