@@ -80,14 +80,17 @@ tailwind as a UI library.
 #### What does command `X` do?
 
 ```bash
-npm run build      # runs `prisma generate` + `prisma migrate` + `next build`
-npm run db-reset   # resets local db based on `/.env`
-npm run dev        # starts next.js
-npm run db-up      # starts postgres db + runs migrations + seeds + starts next.js
-npm run test-dev   # runs e2e tests on dev
-npm run test-start # runs e2e tests on `next start` - build required before
-npm run test:unit  # runs normal jest unit tests
-npm run test:e2e   # runs e2e tests
+npm run build          # runs `prisma generate` + `prisma migrate` + `next build`
+npm run db-migrate-dev # runs strictly the migrations
+npm run db-reset       # resets local db based on `/.env`
+npm run db-seed        # runs the seeds
+npm run db-down        # stops postgres db
+npm run db-up          # starts postgres db + runs migrations + seeds
+npm run dev            # starts next.js
+npm run test-dev       # runs e2e tests on dev
+npm run test-start     # runs e2e tests on `next start` - build required before
+npm run test:unit      # runs normal jest unit tests
+npm run test:e2e       # runs e2e tests
 ```
 
 #### What files should I focus on?
@@ -97,4 +100,3 @@ npm run test:e2e   # runs e2e tests
 - src/pages/index.tsx
 - src/pages/bill/[id].tsx
 - src/components/\*
-
