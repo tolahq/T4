@@ -36,7 +36,7 @@ const config: Config.InitialOptions = {
     '/node_modules/',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node',
   moduleNameMapper: makeModuleNameMapperFromTsConfig('<rootDir>'),
   setupFiles: ['dotenv/config'],
 };

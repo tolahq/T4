@@ -31,13 +31,12 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/yarn.lock') }}-nextjs
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      - run: yarn playwright install --with-deps
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test-start
-      - run: yarn test-dev
+      - run: npx playwright install --with-deps
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run test-start
 
       - name: Upload test results
         if: ${{ always() }}
