@@ -33,11 +33,10 @@ jobs:
           path: ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      - run: npm run playwright install --with-deps
+      - run: npx playwright install --with-deps
       - run: npm run lint
       - run: npm run build
       - run: npm run test-start
-      - run: npm run test-dev
 
       - name: Upload test results
         if: ${{ always() }}
